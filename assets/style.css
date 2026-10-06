@@ -12,3 +12,7 @@
 .headerLogout:hover{background:#fceee9;border-color:#debbae;color:#914d40}
 .headerLogout:focus-visible{outline:2px solid #19876a;outline-offset:3px}
 @media(max-width:760px){.headerLogout{padding:7px 9px;font-size:10px}.breadcrumb{min-width:0;flex-wrap:wrap;gap:5px}.headerRight{gap:9px;flex-shrink:0}}
+
+.loginNote{font-size:11px;color:#8b9f90;line-height:1.7;margin-top:18px}
+
+.bulkModal{width:min(1000px,96vw)}.bulkSettings{display:grid;grid-template-columns:1fr 1fr;gap:16px}.bulkHelp{font-size:12px;color:#8b9e91;line-height:1.7}.bulkList{max-height:45vh;overflow:auto;border:1px solid #e1eae4;border-radius:9px}.bulkList thead{position:sticky;top:0;z-index:1}.bulkList th{background:#f2f7f3}.bulkList td{padding:10px 14px}.bulkList td:first-child{min-width:190px}.bulkList td:nth-child(3){min-width:135px}.bulkList td:nth-child(4){min-width:210px}.modal .bulkList input{margin:0;padding:10px;width:100%;min-width:110px}.bulkSummary{display:flex;justify-content:space-between;align-items:center;padding:16px 2px 0;font-size:12px;color:#7e9485}.bulkSummary b{color:#19876a;font-size:15px}@media(max-width:760px){.bulkModal{padding:20px;width:96vw}.bulkSettings{grid-template-columns:1fr;gap:0}.bulkList{max-height:40vh}.bulkSummary{font-size:10px}.bulkSummary b{font-size:13px}}
