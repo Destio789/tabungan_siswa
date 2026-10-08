@@ -10,7 +10,7 @@ function errorText(e){if(e?.code==='23505')return 'NIS atau email sudah terdafta
 function download(name,content){const a=document.createElement('a');const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8;'}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 function initials(name){return esc((name||'S').split(' ').map(s=>s[0]).slice(0,2).join(''))}
 function visibleStudents(){return state.demo&&state.me.role==='student'?state.students.slice(0,1):state.students}
-function visibleTransactions(){const ids=new Set(visibleStudents().map(s=>s.id));return state.transactions.filter(t=>ids.has(t.student_id))}
+function visibleTransactions(){const ids=new Set(visibleStudents().map(s=>s.id));return state.transactions.filter(t=>ids.has(t.student_id)&&!t.voided_at)}
 function studentName(t){return state.students.find(s=>s.id===t.student_id)?.name||'Siswa'}
 function filteredTransactions(){return visibleTransactions().filter(t=>(state.kind==='all'||t.kind===state.kind)&&(!state.student||t.student_id===state.student)&&(!state.from||new Date(t.occurred_at)>=new Date(state.from+'T00:00:00+07:00'))&&(!state.to||new Date(t.occurred_at)<new Date(new Date(state.to+'T00:00:00+07:00').getTime()+86400000))&&(studentName(t)+' '+t.note).toLowerCase().includes(state.query.toLowerCase()))}
 async function allRows(table,select='*'){let result=[];for(let offset=0;;offset+=1000){const {data,error}=await db.from(table).select(select).order('id').range(offset,offset+999);if(error)throw error;result.push(...data);if(data.length<1000)break}return result}
